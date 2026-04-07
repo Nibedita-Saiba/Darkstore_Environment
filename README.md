@@ -1,19 +1,20 @@
 # 🏪 DarkStore Pricing Environment
 
-An **OpenEnv-compatible** simulation of a perishable goods dark store (rapid delivery grocery), where an AI agent sets daily prices for Milk, Banana, and Bread to maximize profit while managing inventory expiry, restocking schedules, and real demand elasticity.
+An **OpenEnv-compatible** simulation of a perishable goods dark store (rapid delivery grocery), where an AI agent sets daily prices for Milk, Banana, and Bread to maximize profit while managing inventory.
 
 ---
 
 ## 🎯 Environment Description & Motivation
 
-Dark stores operate under extreme margin pressure: items expire fast, demand is price-elastic, and restocking is rigid. This environment captures exactly these constraints — making it a rich, real-world task where optimal pricing requires:
+Dark stores operate under extreme margin pressure: items expire fast, demand is price-elastic, and restocking is rigid. This environment captures exactly these constraints — making it a rich, real-world RL challenge.
 
+**Core decision challenges:**
 - Understanding **price elasticity** (higher price → lower demand, not linearly)
 - Anticipating **expiry dates** (markdown strategy before spoilage)
 - Reading **restock schedules** (don't overstock perishable items)
 - Avoiding **stockouts** (lost revenue) and **wastage** (sunk cost)
 
-The environment is non-trivial: the same price on Day 1 yields a different reward on Day 3 due to stochastic demand noise, changing inventory levels, and restock events. This forces agents to reason over trajectories, not just single steps.
+The environment is non-trivial: the same price on Day 1 yields a different reward on Day 3 due to stochastic demand noise, changing inventory levels, and restock events. This forces agents to reason over multi-day horizons.
 
 ---
 
