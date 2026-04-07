@@ -1,0 +1,42 @@
+name: darkstore-pricing-env
+version: "1.0.0"
+description: >
+  A perishable goods dark store simulation where an AI agent dynamically prices
+  Milk, Banana, and Bread across a market of 1000 households. The agent must
+  balance profit maximization against spoilage, stockouts, and demand elasticity.
+author: darkstore-team
+tags:
+  - openenv
+  - pricing
+  - perishable-goods
+  - supply-chain
+  - real-world
+tasks:
+  - name: easy_pricing
+    description: Price a single product (Milk) for 7 days to maximize profit
+    difficulty: easy
+  - name: medium_pricing
+    description: Price all three products for 14 days with restocking constraints
+    difficulty: medium
+  - name: hard_pricing
+    description: Price all products for 30 days under demand shocks and spoilage penalties
+    difficulty: hard
+observation_space:
+  type: object
+  properties:
+    day: {type: integer}
+    inventory: {type: object}
+    expiry_units: {type: object}
+    cost_prices: {type: object}
+    historical_sales: {type: array}
+    historical_prices: {type: array}
+    demand_forecast: {type: object}
+    task_name: {type: string}
+    days_remaining: {type: integer}
+action_space:
+  type: object
+  properties:
+    milk_price: {type: number, minimum: 1}
+    banana_price: {type: number, minimum: 1}
+    bread_price: {type: number, minimum: 1}
+reward_range: [-100, 100]
